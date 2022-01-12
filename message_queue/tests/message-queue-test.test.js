@@ -1,5 +1,5 @@
 const expect = require('chai').expect;
-var request = require('supertest')("http://localhost:8081");
+var request = require('supertest')("http://localhost:8083");
 const nock = require('nock');
 
 
@@ -7,7 +7,7 @@ describe("Testing the API", function () {
 
   it("GET /messages returns a 200 when get message", function (done) {
     //specify the url to be intercepted
-    nock("http://localhost:8081")
+    nock("http://localhost:8083")
       //define the method
       .get('/messages/')
       //respond 200
@@ -23,7 +23,7 @@ describe("Testing the API", function () {
   })
   
   it("PUT /state returns a 200 when called", function (done) {
-    nock("http://localhost:8081")
+    nock("http://localhost:8083")
       .put('/state?data=RUNNING')
       .reply(200, "PUT /state called ");
     request
@@ -36,7 +36,7 @@ describe("Testing the API", function () {
   })
   
   it("Get /state returns a 200 when called", function (done) {
-    nock("http://localhost:8081")
+    nock("http://localhost:8083")
       .get('/state')
       .reply(200, "PAUSED");
     request
@@ -50,7 +50,7 @@ describe("Testing the API", function () {
   })
   
   it("Get /run-log returns a 200 when called", function (done) {
-    nock("http://localhost:8081")
+    nock("http://localhost:8083")
       .get('/run-log')
       .reply(200, "2020-11-19T18:05:36.037Z: INIT");
     request

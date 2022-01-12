@@ -72,7 +72,7 @@ services:
     links: 
       - rabbitmq
     ports: 
-      - "8081:8081"
+      - "8083:8083"
     networks: 
       - default
     command: ["/api/wait-for-it.sh", "rabbitmq:5672", "-t", "0", "--", "node", "service_api.js"]

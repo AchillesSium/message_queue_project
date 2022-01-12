@@ -35,6 +35,20 @@ describe("Testing the API", function () {
       });
   })
 
+  it("Get /state returns a 200 when called", function (done) {
+    nock("http://localhost:8083")
+      .get('/state')
+      .reply(200, "PAUSED");
+    request
+      .get('/state')
+      .end(function (err, res) {
+        expect(res.status).to.equal(200);
+        expect(res.text).not.to.be.null;
+        done();
+
+      });
+  })
+
   
 });
 

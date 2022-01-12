@@ -21,5 +21,20 @@ describe("Testing the API", function () {
         done();
       });
   })
+
+  it("PUT /state returns a 200 when called", function (done) {
+    nock("http://localhost:8083")
+      .put('/state?data=RUNNING')
+      .reply(200, "PUT /state called ");
+    request
+      .put('/state?data=RUNNING')
+      .end(function (err, res) {
+        expect(res.status).to.equal(200);
+        expect(res.text).not.to.be.null;
+        done();
+      });
+  })
+
+  
 });
 
